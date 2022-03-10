@@ -1,37 +1,51 @@
 const container = document.getElementsByClassName("container");
 
-function makeGrid(){
-    for(let i = 1; i <= 9; i++){
-        let row = document.createElement('div');
-        row.className = 'row';
-        row.id = 'row' + i;
-        row.textContent = i;
-        row.addEventListener('click', changeColor());
-    
-        container[0].appendChild(row);
+//set the default grid size for grid upon loading page
+let gridSize = document.getElementById('grid-size').value;
 
-    }
-    container[0].style.gridTemplateColumns = "repeat(3, 30px)";
-    container[0].style.gridTemplateRows = "repeat(3, 30px)";
-    addEventsToDivs();
+//set the default color for the color picker tool
+let color = document.getElementById('color-picker').value;
+
+//adds an event listenter to the color picker tool and updates the var color
+document.getElementById('color-picker').addEventListener('change', (e) =>{
+    color = e.target.value;
+})
+
+function updateSliderDisplay(value){
+    document.getElementById('slider-text').innerHTML = `Grid Size: ${value} x ${value}`;
+    gridSize = document.getElementById("grid-size").value;
 }
 
-function addEventsToDivs(){
-    let divs = document.querySelectorAll('.row');
+function makeGrid(gridSize){
+    removeGrid();
 
-    divs.forEach((div) => {
-        console.log(div.id);
+    let numOfBoxes = gridSize * gridSize;
+    let numOfColumns = Math.sqrt(numOfBoxes);
+    let numOfRows = numOfColumns;
 
-        div.addEventListener('click', changeColor);
-        // div.onclick = changeColor;
-    });
+    for(let i = 1; i <= numOfBoxes; i++){
+        let box = document.createElement('div');
+        box.className = 'box';
+        box.id = 'box' + i;
+        box.addEventListener('mouseover', changeColor);
+    
+        container[0].appendChild(box);
+
+    }
+    container[0].style.gridTemplateColumns = `repeat(${numOfColumns}, 1fr)`;
+    container[0].style.gridTemplateRows = `repeat(${numOfRows}, 1fr)`;
 }
 
 function changeColor(){
-    console.log("testing");
+    this.style.background = color;
 }
 
-makeGrid();
+function removeGrid(){
+    const boxes = document.querySelectorAll('.box');
 
+    boxes.forEach(box => {
+        box.remove();
+    })
+}
 
-//        div.addEventListener('click', changeColor);
+makeGrid(gridSize);
