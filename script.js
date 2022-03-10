@@ -1,4 +1,4 @@
-const container = document.getElementsByClassName("container");
+const container = document.getElementsByClassName("grid-container");
 
 //set the default grid size for grid upon loading page
 let gridSize = document.getElementById('grid-size').value;

@@ -23,7 +23,7 @@ h1 {
     font-family: 'Bradley Hand ITC', sans-serif;
 }
 
-.container {
+.grid-container {
     display: grid;
     margin-top: 15px;
     border: 5px solid aqua;
@@ -31,21 +31,15 @@ h1 {
     height: 600px;
 }
 
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+
 .box {
     border: black 1px solid;
     background-color: white;
-}
-
-/* .CC {
-    border: orange 1px solid;
-    background-color: "#ff77ee";
-} */
-
-.range-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-top: 25px;
 }
 
 #slider-text, #color-picker {

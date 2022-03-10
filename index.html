@@ -12,15 +12,14 @@
     <body>
         <div class="wrapper">
             <h1>Etch-a-Sketch</h1>
-            <div class="container">
-            </div>
+            <div class="grid-container"></div>
 
-            <div class="range-container">
+            <div class="controls-container">
                 <input type="range" id="grid-size" name="grid-size" value="16" min="3" max="30"
                         onchange="updateSliderDisplay(this.value)" oninput="updateSliderDisplay(this.value)">
                 <p id="slider-text">Grid Size: 16x16</p>
             </div>
-    
+
             <label for="color-picker">Color Picker:</label>
             <input type="color" id="color-picker" value="#0000ff">
             <p>
